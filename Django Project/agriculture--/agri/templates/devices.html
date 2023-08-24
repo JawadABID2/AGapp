@@ -1,0 +1,123 @@
+{% extends 'common.html' %}
+{% load static %}
+{% block script %}
+<script>
+    window.onload = function(){
+        var nav_bar_item = document.getElementById("devices");
+        nav_bar_item.classList.replace("w3-light-gray", "w3-blue");
+        // var link = document.getElementById("devices_link");
+        // link.setAttribute("href", "#")
+    }
+</script>
+{% endblock %}
+{% block title %}Devices{% endblock %}
+{% block content_title %}Devices{% endblock %}
+{% block main_body %}
+<div class="w3-center w3-padding content-center">
+    <!-- <div class="w3-display-container w3-card-4  w3-text-black w3-margin w3-btn" style="width: 25%;">
+        <img class="w3-margin" src="{% static 'images/device.jpg' %}" alt="car" style="width:100%;max-width:320px">
+        <div class="w3-xlarge w3-display-topmiddle w3-text-cyan">Sensor 1</div>
+        <div class="w3-display-bottommiddle content-center w3-light-grey">
+            <div class="icon-container w3-margin-right"><span class="eicon-status-active"></span></div>
+            <span class="w3-large w3-margin-right w3-margin-left" style="padding: 6px;">00 : 00 : 00</span>
+            <div class="w3-margin-left" style="width: 30px;margin-top: 12px;"><span class="eicon-status-battery"></span></div>
+            <span class="w3-large" style="padding: 6px;">100%</span>
+        </div>
+    </div>
+    <div class="w3-display-container w3-card-4  w3-text-black w3-margin w3-btn" style="width: 25%;">
+        <img class="w3-margin" src="{% static 'images/device.jpg' %}" alt="car" style="width:100%;max-width:320px">
+        <div class="w3-xlarge w3-display-topmiddle w3-text-cyan">Sensor 2</div>
+        <div class="w3-display-bottommiddle content-center w3-light-grey">
+            <div class="icon-container w3-margin-right"><span class="eicon-status-down"></span></div>
+            <span class="w3-large w3-margin-right w3-margin-left" style="padding: 6px;">-- : -- : --</span>
+            <div class="w3-margin-left" style="width: 30px;margin-top: 12px;"><span class="eicon-status-battery"></span></div>
+            <span class="w3-large" style="padding: 6px;">---%</span>
+        </div>
+    </div> -->
+    <div class="w3-display-container w3-card-4  w3-text-black w3-margin w3-btn" style="width: 25%;" onclick="electrovanne(this)" id="8800880088008800">
+        <img class="w3-margin" src="{% static 'images/device.jpg' %}" alt="car" style="width:100%;max-width:320px">
+        <div class="w3-xlarge w3-display-topmiddle w3-text-cyan">Actuator 1</div>
+        <div class="w3-display-bottommiddle content-center w3-light-grey">
+            <div class="icon-container w3-margin-right"><span class="eicon-status-pending"></span></div>
+            <span class="w3-large w3-margin-right w3-margin-left" style="padding: 6px;">00 : 00 : 00</span>
+            <div class="w3-margin-left" style="width: 30px;margin-top: 12px;"><span class="eicon-status-battery"></span></div>
+            <span class="w3-large" style="padding: 6px;">100%</span>
+        </div>
+    </div>
+    <div class="w3-display-container w3-card-4  w3-text-black w3-margin w3-btn" style="width: 25%;" onclick="moisture_sensor(this)" id="13e08e2951742243">
+        <img class="w3-margin" src="{% static 'images/device.jpg' %}" alt="car" style="width:100%;max-width:320px">
+        <div class="w3-xlarge w3-display-topmiddle w3-text-cyan">sensor 1</div>
+        <div class="w3-display-bottommiddle content-center w3-light-grey">
+            <div class="icon-container w3-margin-right"><span class="eicon-status-pending"></span></div>
+            <span class="w3-large w3-margin-right w3-margin-left" style="padding: 6px;">00 : 00 : 00</span>
+            <div class="w3-margin-left" style="width: 30px;margin-top: 12px;"><span class="eicon-status-battery"></span></div>
+            <span class="w3-large" style="padding: 6px;">100%</span>
+        </div>
+    </div>
+</div>
+<div class="fixed_button icon-container w3-blue w3-center w3-circle w3-hover-teal" onclick="openModal()"><span class="eicon-add"></span></div>
+<div class="modal w3-center" id="add_devices" style="padding-left: 20%;">
+    <div class="w3-white w3-round-xlarge w3-center w3-margin" style="width: 60%;">
+        <h1>Add new device</h1><br><br>
+        <form action="" method="post">
+            <label class="w3-text w3-serif" style="font-size:25px" for="devEui">
+                Dev EUI : 
+            </label>
+            <input class="w3-border w3-round-xlarge w3-hover-light-gray w3-serif w3-padding" 
+                    type="text" id="devEui" style="height: 40px;width: 600px;font-size:25px;"
+            /><br><br>
+            <label class="w3-text w3-serif" style="font-size:25px" for="appEui">
+                App EUI : 
+            </label>
+            <input class="w3-border w3-round-xlarge w3-hover-light-gray w3-serif w3-padding" 
+                    type="text" id="appEui" style="height: 40px;width: 600px;font-size:25px;"
+            /><br><br>
+            <label class="w3-text w3-serif" style="font-size:25px" for="appKey">
+                App Key : 
+            </label>
+            <input class="w3-border w3-round-xlarge w3-hover-light-gray w3-serif w3-padding" 
+                    type="text" id="appKey" style="height: 40px;width: 600px;font-size:25px;"
+            /><br><br>
+        </form>
+    </div>
+</div>
+<script>
+    function openModal() {
+        var modal = document.getElementById("add_devices");
+        modal.style.display = "block";
+    }
+    function electrovanne(target) {
+        eltID = target.getAttribute("id");
+        url = "{% url 'actuators' 'id' %}"
+        window.location.href = url.replace('id', eltID)
+        // console.log(url)
+        // console.log(url.replace('id', eltID))
+    }
+    function moisture_sensor(target){
+        eltID = target.getAttribute("id")
+        url = "{% url 'sensors' 'id' %}"
+        window.location.href = url.replace('id', eltID)
+    }
+    window.onclick = function(e){
+        var modal = document.getElementById("add_devices");
+        if(e.target == modal){
+            modal.style.display = "none";
+        }
+    }
+</script>
+<style>
+    .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 2%; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+</style>
+{% endblock %}

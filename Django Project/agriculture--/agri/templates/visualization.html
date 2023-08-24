@@ -1,0 +1,178 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .right-div {
+        position: fixed;
+        top: 0;
+        right: 25px;
+        width: 800px;
+        /* height: 100%; */
+        /* background-color: gray;
+        color: white; */
+    }
+    .bottom-right-div{
+      position: fixed;
+      bottom: 50px;
+      right: 25px;
+      width: 800px;
+
+    }
+</style>
+</head>
+<body> -->
+    <style>
+        .right-div {
+            position: fixed;
+            top: 0;
+            right: 25px;
+            width: 800px;
+            /* height: 100%; */
+            /* background-color: gray;
+            color: white; */
+        }
+        .bottom-right-div{
+          position: fixed;
+          bottom: 0;
+          right: 25px;
+          width: 800px;
+      
+        }
+      </style>
+        
+        
+        <div style="width:800px";>
+          <h2>Temperature graph : </h2>
+          <canvas id="myChart"></canvas>
+        </div>
+        <div style="width: 800px";>
+          <h2> Humidity graph : </h2>
+          <canvas id ="myChart1"></canvas>
+        </div>
+        <div class="right-div">
+          <h2>battery graph : </h2>
+          <canvas id = "myChart2">
+          </canvas>
+        </div>
+        <div class="bottom-right-div">
+          <h2>CO2 graph : </h2>
+          <canvas id="myChart3">
+          </canvas>
+        </div>
+      
+      
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+        <script>
+          const ctx = document.getElementById('myChart');
+           data = JSON.parse("{{context|escapejs}}")
+          console.log(data)
+        
+          new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels : data.labels,
+                    
+              datasets: [{
+                label: 'Temperature : ',
+                data: data.temperature,
+                borderWidth: 2 ,
+                borderColor : 'red',
+                pointRadius : 1,
+                tension : 0.8
+              }]
+            },
+            options: {
+              scales: {
+                x : {
+                  display : false
+                },
+                y: {
+                  beginAtZero: true,
+                  // suggestedMax: 80
+                }
+              }
+            }
+          });
+          const ctx1 = document.getElementById("myChart1");
+          new Chart(ctx1, {
+            type : 'line',
+            data : {
+              labels : data.labels,
+              datasets : [{
+                label : 'humidity : ',
+                data : data.humidity, 
+                borderWidth : 1,
+                pointRadius : 1,
+                tension : 0.8
+              }],
+            },
+            options : {
+              scales : {
+                x : {
+                  display : false
+                },
+                y : {
+                  beginAtZero : true
+                }
+              }
+            }
+            
+          });
+          const ctx2 = document.getElementById("myChart2");
+          new Chart(ctx2, {
+            type : 'line',
+            data : {
+              labels : data.labels,
+              datasets : [{
+                label : 'battery : ',
+                data : data.battery,
+                borderWidth : 1,
+                pointRadius : 1,
+                tension : 0.8
+              }]
+            },
+            options : {
+              scales :{
+                x : {
+                  display : false
+                },
+                y : {
+                  beginAtZero : true
+                }
+              }
+            }
+          });
+          const ctx3 = document.getElementById("myChart3");
+          new Chart(ctx3, {
+            type : 'line',
+            data : {
+              labels : data.labels,
+              datasets : [{
+                label : 'CO2 : ',
+                data : data.CO2,
+                borderWidth : 1,
+                pointRadius : 1,
+                tension : 0.8
+              }]
+            },
+            options : {
+              scales : {
+                x : {
+                  display : false
+                },
+                y : {
+                  beginAtZero : true
+                }
+              }
+            }
+      
+          })
+        </script>
+      {% endblock %}
+        

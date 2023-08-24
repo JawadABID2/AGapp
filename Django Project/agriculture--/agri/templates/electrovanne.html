@@ -1,0 +1,48 @@
+{% extends 'common.html' %}
+{% load static %}
+{% block script %}
+<script>
+    window.onload = function(){
+        var nav_bar_item = document.getElementById("devices");
+        nav_bar_item.classList.replace("w3-light-gray", "w3-blue");
+        // var link = document.getElementById("devices_link");
+        // link.setAttribute("href", "#")
+    }
+</script>
+{% endblock %}
+{% block title %}Devices{% endblock %}
+{% block content_title %}Devices{% endblock %}
+{% block main_body %}
+<div class="w3-center w3-padding">
+    <h1><b>Electrovanne : </b><i>{{data}}</i></h1><br><br>
+    <div class="w3-card w3-sand w3-padding w3-round-large" style="width: 50%; margin: auto;">
+        <form id="valveCmdForm">
+            {% csrf_token %}
+            <div class="w3-row-padding w3-padding">
+                <div class="w3-half" style="width: 70%;">
+                    <label class="w3-text w3-xlarge w3-left" for="cmd_dur">Duration : </label><br>
+                    <input class="w3-input w3-large w3-border w3-round-xlarge" type="number" id="cmd_dur">
+                </div>
+                <div class="w3-half w3-margin-top" style="width: 25%;">
+                    <label class="w3-text w3-large" for="cmd_forever">Undefined Time</label><br>
+                    <input class="w3-check" type="checkbox" name="endless_cmd" id="cmd_forever" value="Undefined_time" onchange="endlessCheck(this)"><br>
+                </div>
+            </div>
+            <div class="w3-padding w3-left-align">
+                <p class="w3-text w3-large">
+                    <input class="w3-radio" type="radio" name="cmd" id="cmd_ON" value="OpenValve" checked>
+                    <label class="w3-margin-left" for="cmd_ON">Open Valve</label>
+                </p>
+                <p class="w3-text w3-large">
+                    <input class="w3-radio" type="radio" name="cmd" id="cmd_OFF" value="CloseValve">
+                    <label class="w3-margin-left" for="cmd_OFF">Close Valve</label>
+                </p><br>
+            </div>
+            <input class="w3-btn w3-green w3-xlarge w3-round-large" type="submit" value="Send" style="width: 50%;">
+        </form>
+    </div>
+</div>
+<script src="{% static 'javascripts/electrovanne.js' %}" defer data-actuator-id="{{data}}" type="text/javascript">
+        
+</script>
+{% endblock %}

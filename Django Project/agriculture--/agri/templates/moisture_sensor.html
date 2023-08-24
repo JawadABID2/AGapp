@@ -1,0 +1,75 @@
+
+{% extends 'common.html' %}
+{% load static %}
+{% block script %}
+<script>
+    window.onload = function(){
+        var nav_bar_item = document.getElementById("devices");
+        nav_bar_item.classList.replace("w3-light-gray", "w3-blue");
+        // var link = document.getElementById("devices_link");
+        // link.setAttribute("href", "#")
+    }
+</script>
+{% endblock %}
+{% block title %}Device{% endblock %}
+{% block content_title %}Device{% endblock %}
+{% block main_body %}
+<!-- <div class="w3-row-padding w3-padding w3-panel w3-border " style="width: 50%; margin: auto;">
+  <div class="w3-half w3-border" style="width: 90%;">
+      <h4><b>SOIL MOISTURE & TEMP & EC SENSOR  </b><i>{{data}}</i></h4><br><br>
+  </div>
+</div> -->
+
+
+
+<div class="w3-row-padding w3-padding w3-panel " style="width: 50%; height: 50px; margin: auto;">
+  
+  <h4><b>SOIL MOISTURE & TEMP & EC SENSOR  </b><i>{{data}}</i></h4><br><br>
+ 
+</div>
+
+<div class="w3-half  top-right-div " style="width: 5%;" onclick="openModal1()">
+  <div class="icon-container  w3-circle w3-light-gray w3-hover-gray" style="cursor: pointer;"  > <span class="eicon-settings"></span></div>
+</div>
+
+
+<div class="modal w3-center" id="setting_deepSleep_duration" style="padding-left: 20%;">
+  <div class="w3-white w3-round-xlarge w3-center w3-margin" style="width: 60%;">
+    <h1>Setting deep sleep time</h1><br><br>
+    <form action="" method="post">
+        <label class="w3-text w3-serif" style="font-size:25px" for="devEui">
+            Depp Sleep Time : 
+        </label>
+        <input class="w3-input w3-large w3-border w3-round-xlarge" type="number" id="deepsleeptime">
+        <br><br>
+        <input class="w3-btn w3-green w3-xlarge w3-round-large" type="submit" value="Senddeepsleeptime" style="width: 50%;">
+    </form>
+  </div>
+</div>
+<!-- </div> -->
+
+
+<div class="left-div">
+  <h4>Temperature graph : </h4>
+  <canvas id="myChart"></canvas>
+</div>
+<div class="bottom-left-div ">
+  <h2> Humidity graph : </h2>
+  <canvas id ="myChart1"></canvas>
+</div>
+<div class="right-div">
+  <h4>battery graph : </h4>
+  <canvas id = "myChart2">
+  </canvas>
+</div>
+<div class="bottom-right-div">
+  <h4>CO2 graph : </h4>
+  <canvas id="myChart3">
+  </canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'javascripts/moisture_sensor.js' %}" defer data-actuator-id="{{data}}" data-context="{{context}}" type="text/javascript"></script>
+
+{% endblock %}
+  

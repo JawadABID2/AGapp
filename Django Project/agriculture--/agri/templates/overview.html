@@ -1,0 +1,16 @@
+{% extends 'common.html' %}
+{% block script %}
+<script>
+    window.onload = function(){
+        var nav_bar_item = document.getElementById("overview");
+        nav_bar_item.classList.replace("w3-light-gray", "w3-blue");
+        var link = document.getElementById("overview_link");
+        link.setAttribute("href", "#")
+    }
+</script>
+{% endblock %}
+{% block title %}Overview{% endblock %}
+{% block content_title %}DashBoard Overview{% endblock %}
+{% block main_body %}
+    
+{% endblock %}

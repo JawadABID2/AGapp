@@ -1,0 +1,53 @@
+{
+    "deduplicationId":"85e7f924-6549-409b-ada8-13be93dd1ca8",
+    "time":"2023-06-09T09:35:04.328105197+00:00",
+    "deviceInfo":{
+        "tenantId":"894dc523-e1d9-411e-a866-fa6a39f91965",
+        "tenantName":"Development",
+        "applicationId":"367c9132-5f89-442e-b606-e4e7a3bdb833",
+        "applicationName":"Agriculture",
+        "deviceProfileId":"7850da97-041c-4476-989e-a78c1958ae8f",
+        "deviceProfileName":"TestDevProfile",
+        "deviceName":"Elevtrovanne",
+        "devEui":"3cd2682ac736df8d",
+        "tags":{}
+    },
+    "devAddr":"01361e56",
+    "adr":true,
+    "dr":5,
+    "fCnt":49,
+    "fPort":2,
+    "confirmed":true,
+    "data":"AZFAdxsA",
+    "object":{"bytes":[1.0,145.0,64.0,119.0,27.0,0.0]},
+    "rxInfo":[{
+        "gatewayId":"ac1f09fffe0cb1b1",
+        "uplinkId":24452,"rssi":-62,
+        "snr":14.0,"channel":1,
+        "location":{"latitude":34.68897178292354,"longitude":-1.9166046380996706},
+        "context":"7MTuTQ==",
+        "metadata":{"region_common_name":"EU868","region_config_id":"eu868"},
+        "crcStatus":"CRC_OK"
+    }],
+    "txInfo":{
+        "frequency":867300000,
+        "modulation":{
+            "lora":{
+                "bandwidth":125000,
+                "spreadingFactor":7,
+                "codeRate":"CR_4_5"
+            }
+        }
+    }
+}
+
+
+{
+    "tab": {"id": 7447, "devId": 2, "Temp": 27.94, "Hum": 10.24, "Ec": 0.8, "Sal": 0.44, "Bat": 3.54, "dt": "2023-06-20T14:17:12.478055Z", "time": "14:17:12.478055"}, 
+    "max_temp": {"Temp__max": 36.0}, 
+    "min_temp": {"Temp__min": 10.0}, 
+    "moy": 23.0, 
+    "f": {"id": 23, "devId": 2, "Temp": 34.0, "Hum": 16.0, "Ec": 143.0, "Sal": 78.0, "Bat": 3.6, "dt": "2022-07-22T19:23:06.799635Z", "time": "20:23:06.799635"}, 
+    "cap2": {"id": 3725, "devId": 3, "Temp": 19.0, "Hum": 0.0, "Ec": 0.0, "Sal": 0.0, "Bat": 4.01, "dt": "2023-03-14T18:11:41.075201Z"}, 
+    "bv": {"id": 6234, "bat": 3.9, "dt": "2023-06-20T14:29:03.464007Z"}
+}

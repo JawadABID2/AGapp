@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css; charset=utf-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css" type="text/css"/>
+    <link rel="shortcut icon" href="{% static 'images/logo_new.png' %}" type="image/x-icon">
+    <title>{% block title %}{% endblock %}</title>
+    <script>
+        function homePage() {
+            window.location.href = "{% url 'overview' %}"
+        }
+    </script>
+    {% block script %}{% endblock %}
+</head>
+<body style="padding: 0; margin: 0;">
+    <!-- Top container -->
+    <div class="w3-bar w3-light-grey" style="box-shadow: rgba(6, 24, 44, 0.4) 0px 2px 0px 4px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;">
+        <div class="w3-left w3-dark-gray" style="width: 22%;cursor: pointer;" onclick="homePage()">
+            <div class="w3-left" style="padding-left: 5px; padding-top: 4px;"><img src="{% static 'images/logo_new.png' %}" height="45" alt="Logo"></div>
+            <div class="w3-left" style="padding-left: 15px; padding-top: 5px;"><h4><b>OpenSNZ Technology</b></h4></div>
+        </div>
+        <div class="w3-right" style="padding-top: 10px;">
+            <img src="{% static 'images/profil.png' %}" class="w3-circle w3-margin-right w3-border" style="height: 30px;" alt="Profile">
+        </div>
+        <div class="w3-right" style="padding-right: 25px;"><i><h4>Welcome, <strong>Mike</strong></h4></i></div>
+    </div>
+  
+    <!-- Sidebar/menu w3-animate-left -->
+    <nav class="w3-sidebar w3-collapse w3-sand w3-rightbar" style="width:20%; margin-top: 6px;" id="mySidebar">
+        <div class="w3-container" style="margin-top: 0px;padding-top: 0px;">
+            <br>
+            <h3><b>Dashboard</b></h3>
+        </div>
+        <div class="w3-bar-block">
+            <div class="w3-container w3-topbar w3-border-bottom  w3-light-gray w3-hover-teal" id="overview">
+                <a href="{% url 'overview' %}" class="w3-bar-item w3-button w3-hover-none" style="font-size: 18px;" id="overview_link">
+                    <div class="icon-container"><span class="eicon-overview"></span></div>
+                    <div class="w3-padding-large">    Overview</div>
+                </a>
+            </div>
+            <!-- <div class="w3-container w3-border-top w3-border-bottom w3-light-gray w3-hover-teal" id="networks">
+                <a href="#" class="w3-bar-item w3-button w3-hover-none" style="font-size: 18px;">
+                    <div class="icon-container"><span class="eicon-network"></span></div>
+                    <div class="w3-padding-large">    Networks</div>
+                </a>
+            </div>
+            <div class="w3-container w3-border-top w3-border-bottom w3-light-gray w3-hover-teal" id="gateways">
+                <a href="#" class="w3-bar-item w3-button w3-hover-none" style="font-size: 18px;">
+                    <div class="icon-container"><span class="eicon-gateway"></span></div>
+                    <div class="w3-padding-large">    Gateways</div>
+                </a>
+            </div> -->
+            <div class="w3-container w3-border-top w3-border-bottom w3-light-gray w3-hover-teal" id="devices">
+                <a href="{% url 'devices' %}" class="w3-bar-item w3-button w3-hover-none" style="font-size: 18px;" id="devices_link">
+                    <div class="icon-container"><span class="eicon-device"></span></div>
+                    <div class="w3-padding-large">    Devices</div>
+                </a>
+            </div>
+            <div class="w3-container w3-border-top w3-border-bottom w3-light-gray w3-hover-teal" id="applications">
+                <a href="#" class="w3-bar-item w3-button w3-hover-none" style="font-size: 18px;">
+                    <div class="icon-container"><span class="eicon-app"></span></div>
+                    <div class="w3-padding-large">    Applications</div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="w3-main" style="margin-left:20%;display: inline-block;margin-top: 4px; width: 80%; padding: 0;">
+        <div class="w3-bar w3-light-grey w3-margin-top w3-margin-bottom" style="padding-left: 20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+            <b><h2 class="w3-margin-left">{% block content_title %}{% endblock %}</h2></b>
+        </div>
+        {% block main_body %}{% endblock %}
+    </div>
+</body>
+</html>

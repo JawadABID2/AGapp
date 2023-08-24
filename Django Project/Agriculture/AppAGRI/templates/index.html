@@ -1,0 +1,435 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>IoT-Home</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="{% static 'images/logo_new.png' %}" type="image/x-icon"> 
+    <!-- FontAwesome JS-->
+    <script defer src="{% static 'assets/plugins/fontawesome/js/all.min.js'%}"></script>
+    <!-- App CSS -->  
+    <link id="theme-style" rel="stylesheet" href="{% static 'assets/css/portal.css'%}">
+	<link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
+</head>
+<script defer src="{% static 'assets/js/index.js' %}"></script>
+<body class="app" id="1">
+    <header class="app-header fixed-top  background-color: #808080;">
+        <div class="app-header-inner ">
+	        <div class="container-fluid py-2 ">
+		        <div class="app-header-content ">
+		            <div class="row justify-content-between align-items-center">
+				    <div class="col-auto">
+					    <a id="sidepanel-toggler" class="sidepanel-toggler d-inline-block d-xl-none" href="#">
+						    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+					    </a>
+				    </div><!--//col-->
+		            <div class="search-mobile-trigger d-sm-none col">
+			            <i class="search-mobile-trigger-icon fas fa-search"></i>
+			        </div><!--//col-->
+		            <div class="app-utilities col-auto">
+			            <div class="app-utility-item app-user-dropdown dropdown">
+				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="{% static 'assets/images/user.png'%}" alt="user profile"></a>
+				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
+								<li><a class="dropdown-item" href="login.html">Log Out</a></li>
+							</ul>
+			            </div><!--//app-user-dropdown-->
+		            </div><!--//app-utilities-->
+		        </div><!--//row-->
+	            </div><!--//app-header-content-->
+	        </div><!--//container-fluid-->
+        </div><!--//app-header-inner-->
+        <div id="app-sidepanel" class="app-sidepanel" >
+	        <div id="sidepanel-drop" class="sidepanel-drop"></div>
+	        <div class="sidepanel-inner d-flex flex-column">
+		        <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
+		        <div class="app-branding">
+		            <a class="app-logo" href="{% url 'home'%}"><img class="logo-icon me-2" src="{% static 'assets/images/app-logo.svg'%}" alt="logo"><span class="logo-text">IoT</span></a>
+		        </div><!--//app-branding-->  
+			    <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
+				    <ul class="app-menu list-unstyled accordion" id="menu-accordion">
+					    <li class="nav-item">
+					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+					        <a class="nav-link" href="{% url 'home'%}">
+						        <span class="nav-icon">
+									<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z"/>
+										<path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+									</svg>
+								</span>
+								<span class="nav-link-text">Home</span>
+					        </a><!--//nav-link-->
+					    </li><!--//nav-item-->
+					    <li class="nav-item">
+					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+					        <a class="nav-link" href="#">
+						        <span class="nav-icon">
+									<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+										<path fill-rule="evenodd" d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
+										<circle cx="3.5" cy="5.5" r=".5"/>
+										<circle cx="3.5" cy="8" r=".5"/>
+										<circle cx="3.5" cy="10.5" r=".5"/>
+									</svg>
+								</span>
+								<span class="nav-link-text">Station Méteo</span>
+					        </a>
+							<!--//nav-link-->
+					    </li><!--//nav-item-->
+						<li class="nav-item">
+					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+					        <a class="nav-link" href="#">
+						        <span class="nav-icon">
+						        	<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+										<path fill-rule="evenodd" d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
+										<circle cx="3.5" cy="5.5" r=".5"/>
+										<circle cx="3.5" cy="8" r=".5"/>
+										<circle cx="3.5" cy="10.5" r=".5"/>
+									</svg>
+								</span>
+								<span class="nav-link-text">Station Méteo openSNZ</span>
+					        </a>
+							<!--//nav-link-->
+					    </li>
+				    </ul><!--//app-menu-->
+			    </nav><!--//app-nav-->
+			    <div class="app-sidepanel-footer">
+				    <nav class="app-nav app-nav-footer">
+					     <ul class="app-menu footer-menu list-unstyled">
+						    <li class="nav-item">
+						        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+						        <a class="nav-link" href="https://themes.3rdwavemedia.com/bootstrap-templates/admin-dashboard/portal-free-bootstrap-admin-dashboard-template-for-developers/">
+							        <span class="nav-icon">
+							            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" d="M12 1H4a1 1 0 0 0-1 1v10.755S4 11 8 11s5 1.755 5 1.755V2a1 1 0 0 0-1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
+											<path fill-rule="evenodd" d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+										</svg>
+							        </span>
+			                        <span class="nav-link-text">Plate-Forme IoT 2022</span>
+						        </a><!--//nav-link-->
+						    </li><!--//nav-item-->
+					    </ul><!--//footer-menu-->
+				    </nav>
+			    </div><!--//app-sidepanel-footer-->
+	        </div><!--//sidepanel-inner-->
+	    </div><!--//app-sidepanel-->
+    </header><!--//app-header-->
+    
+    <div class="app-wrapper ">
+	    <div class="app-content pt-3 p-md-3 p-lg-4">
+		    <div class="container-xl text-center">
+			    <h1 class="app-page-title"></h1>
+			    <div class="row">
+				    <div class="col">
+					    <div class="app-card app-card-basic d-flex flex-column align-items-start-center text-center shadow-sm background-color: #808080">
+						    <div class="app-card-header text-center p-3 border-bottom-0 text-center  " >
+						        <div class="row align-items-center gx-3 text-center bg-primary">
+							        <div class="col-auto align-items-center text-center text-white ">
+							        </div><!--//col-->
+							        <div class=" head-card-title-center" >
+								        <h4 class="app-card-title-center text-white ">Electrovanne</h4>
+							        </div><!--//col-->	        
+								</div><!--//row-->
+						    </div><!--//app-card-header-->
+						    <div class="app-card-body px-4">
+								<table class="table app-table-hover mb-2">
+									<tbody>
+										<tr>
+											<!-- <form action="" method="post" onsubmit="return confirm ('Are you sure?')" id="two">
+												{% csrf_token %} -->
+												<div id="" class="d-grid gap-2 text-center">
+													<!-- <script>http://javascript-coder.com/javascript-form/javascript-reset-form.phtml</script> -->
+													<td>	<button name="btn" id="get1" class="btn btn-secondary"  onClick="openValve()" ><em>On</em></button></td>
+													<td>	<button name="btn1" id="get2" class="btn btn-warning"   onClick="closeValve()"><em>Off</em></button></td>
+												</div>
+											<!-- </form> -->
+										</tr>
+									</tbody>
+								</table>
+								<table class="table app-table-hover ">
+									<tbody>
+										<tr>
+											<div>
+												<h1><em><a > Batterie_EV : </a></em></h1>
+												<h1>
+													<em>
+														<a id="valve_bat_value">{{bv.bat}} </a>
+													</em>
+												</h1> 
+												<h10><font color = "dark" id="valve_data_timeago">(il ya {{bv.dt|timesince}})</font></h10>
+							        		</div><!--//col-->
+										</tr>
+										<tr>
+											<!-- <form action="" method="post" id="one">
+												{% csrf_token %}
+												<h3> <em><label>  time for irrigation :</label></em></h3>
+												<input type="time" id="startdate" name="startdate"><br><br>
+												<button type="submit">valider</button>
+											</form> -->
+											<!-- <small>Office hours are 9am to 6pm</small>-->
+										</tr>
+										<tr>
+											<br><br><br><br>
+											<h2><em> Définir le Débit </em></h2>
+											<form id="valve_flow_form">
+												<input type="number" id="valve_flow_value" step=".01" value="{{flow.Flow}}">
+												<label for="valve_flow_value" style="font-size: x-large; margin-left: 10px;">cl/s</label><br><br>
+												<input class="btn btn-secondary" type="submit" value="Set">
+											</form>
+										</tr>
+								</tbody>
+								</table>
+							<!-- <div class="intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam aliquet eros vel diam semper mollis.</div>-->
+						    </div><!--//app-card-body-->
+						</div><!--//app-card-->
+				    </div><!--//col-->
+					<!-- ********************************************************************************* -->
+					
+				    <div class="col">
+					    <div class="app-card app-card-basic d-flex flex-column align-items-start-center text-center shadow-sm ">
+						    <div class="app-card-header text-center p-3 border-bottom-0 text-center ">
+						        <div class="row align-items-center gx-3 text-center bg-info">
+							        <div class="col-auto align-items-center text-center ">
+							        </div><!--//col-->
+							        <div class=" head-card-title-center ">
+										<h4 class="app-card-title-center text-white "> capteur NPK du sol  </h4>   <h10><font color = "white" id="capnpk_timeago">(il ya {{capnpk.dt|timesince}})</font></h10>
+							        </div><!--//col-->
+						        </div><!--//row-->
+						    </div><!--//app-card-header-->
+						    <div class="app-card-body px-4">
+								<div class=" body-card col-auto ">
+									<table class="table app-table-hover mb-2">
+										<tbody>
+											<tr>
+												<td style="text-align: left;" width="400" rowspan="3"><strong><em> <a href="{% url 'asacc'%}"> Azoute </a></em></strong>
+													<br><h1><em> <a href="{% url 'asacc'%}" id="capnpk_az"> {{capnpk.Azoute}} mg/kg </a></em></h1>
+												</td>
+												<td style="text-align: right;" width="150"><em>Max: {{max_azoute.Azoute__max}}</em></td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150"><em>Moy: {{moy_az}}</em></td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150"><em>Min: {{min_azoute.Azoute__min}}</em></td>
+											</tr>
+											<tr>
+												<td style="text-align: left;" width="400" rowspan="3"><strong><em> <a href="{% url 'phsacc'%}"> Phosphore </a></em></strong>
+													<br><h1><em> <a href="{% url 'phsacc'%}" id="capnpk_ph"> {{capnpk.Phosphore}} mg/kg </a></em></h1>
+												</td>
+												<td style="text-align: right;" width="150">Max: {{max_pho.Phosphore__max}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150">Moy: {{moy_pho}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150">Min: {{min_pho.Phosphore__min}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: left;" width="400" rowspan="3"><strong><em> <a href="{% url 'psacc'%}"> Potassiume </a></em></strong>
+													<br><h1><em> <a href="{% url 'psacc'%}"  id="capnpk_po"> {{capnpk.Potassium}} mg/kg </a></em></h1>
+												</td>
+												<td style="text-align: right;" width="150">Max:{{min_po.Potassium__min}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150">Moy:{{moy_po}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150">Min:{{min_po.Potassium__min}}</td>
+											</tr>
+											
+											<tr>
+												<td style="text-align: left;" width="400" rowspan="3"><strong><em> <a href="{% url 'npkbsacc'%}"> Batterie </a> </em></strong>
+													<br><h1><em> <a href="{% url 'npkbsacc'%}"  id="capnpk_ba"> {{capnpk.Bat}} V </a> </em></h1>
+												</td>
+												<td style="text-align: right;" width="150">Max:{{max_batnpk.Bat__max}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150">Moy:{{moy_batnpk}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150">Min:{{min_batnpk.Bat__min}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div><!--//col-->
+						    </div><!--//app-card-body-->
+						</div><!--//app-card-->
+				    </div><!--//col-->
+					<!-- **************************************************************************************** -->
+				    <div class="col">
+					    <div class="app-card app-card-basic d-flex flex-column align-items-start-center text-center shadow-sm ">
+						    <div class="app-card-header text-center p-3 border-bottom-0 text-center ">
+						        <div class="row align-items-center gx-3 text-center bg-info">
+							        <div class="col-auto align-items-center text-center ">
+							        </div><!--//col-->
+							        <div class=" head-card-title-center ">
+										<h4 class="app-card-title-center text-white "> 1er capteur de sol  </h4>   <h10><font color = "white" id="capsol_timeago">(il ya {{tab.dt|timesince}})</font></h10>
+							        </div><!--//col-->
+						        </div><!--//row-->
+						    </div><!--//app-card-header-->
+						    <div class="app-card-body px-4">
+								<div class=" body-card col-auto ">
+									<table class="table app-table-hover mb-2">
+										<tbody>
+											<tr>
+												<td style="text-align: left;" width="400" rowspan="3"><strong><em> <a href="{% url 'tsacc'%}"> Temperature </a></em></strong>
+													<br><h1><em> <a href="{% url 'tsacc'%}" id="capsol_temp"> {{tab.Temp}} °C </a></em></h1>
+												</td>
+												<td style="text-align: right;" width="150"><em>Max:{{max_temp1.Temp__max}}</em></td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150"><em>Moy:{{moyt1}}</em></td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150"><em>Min:{{min_temp1.Temp__min}}</em></td>
+											</tr>
+											<tr>
+												<td style="text-align: left;" width="400" rowspan="3"><strong><em> <a href="{% url 'hsacc'%}"> Humidité </a></em></strong>
+													<br><h1><em> <a href="{% url 'hsacc'%}" id="capsol_hum"> {{tab.Hum}} % </a></em></h1>
+												</td>
+												<td style="text-align: right;" width="150">Max:{{max_hum1.Hum__max}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150">Moy:{{moyh1}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150">Min:{{min_hum1.Hum__min}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: left;" width="400" rowspan="3">
+													<strong><em> <a href="{% url 'ssacc'%}"> Salainité </a></em></strong>
+													<br><h1><em> <a href="{% url 'ssacc'%}"  id="capsol_sal"> {{tab.Sal}} mg/L </a></em></h1>
+												</td>
+												<td style="text-align: right;" width="150">Max:{{max_sal1.Sal__max}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150">Moy:{{moys1}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150">Min:{{min_hum1.Hum__min}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: left;" width="400" rowspan="3"><strong><em> <a href="{% url 'esacc'%}">EC </a></em></strong>
+													<br><h1><em> <a href="{% url 'esacc'%}"  id="capsol_ec">{{tab.Ec}} µS/cm </a></em></h1>
+												</td>
+												<td style="text-align: right;" width="150">Max:{{max_ec1.Ec__max}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150">Moy:{{moyec1}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150">Min:{{min_ec1.Ec__min}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: left;" width="400" rowspan="3"><strong><em> <a href="{% url 'bsacc'%}"> Batterie </a> </em></strong>
+													<br><h1><em> <a href="{% url 'bsacc'%}"  id="capsol_bat"> {{tab.Bat}} V </a> </em></h1>
+												</td>
+												<td style="text-align: right;" width="150">Max:{{max_bat1.Bat__max}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150">Moy:{{moyb1}}</td>
+											</tr>
+											<tr>
+												<td style="text-align: right;" width="150">Min:{{min_bat1.Bat__min}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div><!--//col-->
+						    </div><!--//app-card-body-->
+						</div><!--//app-card-->
+				    </div><!--//col-->
+				    <div class="col">
+					    <div class="app-card app-card-basic d-flex flex-column align-items-start-center text-center shadow-sm border-light mb-3">
+						    <div class="app-card-header text-center p-3 border-bottom-0 text-center ">
+						        <div class="row align-items-center gx-3 text-center bg-info">
+							        <div class="col-auto align-items-center text-center ">
+							        </div><!--//col-->
+							        <div class=" head-card-title-center ">
+								        <h4 class="app-card-title-center text-white "> 2éme capteur de sol </h4> <h10><font color = "white" id="capsol2_timeago">(il ya {{cap2.dt|timesince}})</font></h10>
+							        </div><!--//col-->
+						        </div><!--//row-->
+						    </div><!--//app-card-header-->
+						    <div class="app-card-body px-4">
+								<table class="table app-table-hover mb-2">
+									<tbody>
+										<tr>
+											<td style="text-align: left;" width="400" rowspan="3"><strong   ><em><a href="{% url '2tsacc'%}">Temperature</a></em></strong>
+											<br>
+												<h1><em><a href="{% url '2tsacc'%}" id="capsol2_temp">{{cap2.Temp}} °C</a></em></h1>
+											</td>
+											<td style="text-align: right;" width="150"><em>Max:{{max_temp2.Temp__max}}</em></td>
+										</tr>
+										<tr>
+											<td style="text-align: right;" width="150"><em>Moy:{{moyt2}}</em></td>
+										</tr>
+										<tr>
+											<td style="text-align: right;" width="150"><em>Min:{{min_temp2.Temp__min}}</em></td>
+										</tr>
+										<tr>
+											<td style="text-align: left;" width="400" rowspan="3"><strong><a href="{% url '2hsacc'%}"><em>Humidité</em></a></strong>
+												<br><h1><a href="{% url '2hsacc'%}" id="capsol2_hum"><em>{{cap2.Hum}} %</em></a></h1>
+											</td>
+											<td style="text-align: right;" width="150">Max:{{max_hum2.Hum__max}}</td>
+										</tr>
+										<tr>
+											<td style="text-align: right;" width="150">Moy:{{moyh2}}</td>
+										</tr>
+										<tr>
+											<td style="text-align: right;" width="150">Min:{{min_hum2.Hum__min}}</td>
+										</tr>
+										<tr>
+											<td style="text-align: left;" width="400" rowspan="3">
+												<strong><a href="{% url '2ssacc'%}"><em>Salainité</em></a></strong>
+												<br><h1><a href="{% url '2ssacc'%}" id="capsol2_sal"><em>{{cap2.Sal}} mg/L</em></a></h1>
+											</td>
+											<td style="text-align: right;" width="150">Max:{{max_sal2.Sal__max}}</td>
+										</tr>
+										<tr>
+											<td style="text-align: right;" width="150">Moy:{{moys2}}</td>
+										</tr>
+										<tr>
+											<td style="text-align: right;" width="150">Min:{{min_sal2.Sal__min}}</td>
+										</tr>
+										<tr>
+											<td style="text-align: left;" width="400" rowspan="3"><strong><a href="{% url '2esacc'%}"><em>EC</em></a></strong>
+												<br><h1><a href="{% url '2esacc'%}" id="capsol2_ec"><em>{{cap2.Ec}} µS/cm</em></a></h1>
+											</td>
+											<td style="text-align: right;" width="150">Max:{{max_ec2.Ec__max}}</td>
+										</tr>
+										<tr>
+											<td style="text-align: right;" width="150">Moy:{{moyec2}}</td>
+										</tr>
+										<tr>
+											<td style="text-align: right;" width="150">Min:{{min_ec2.Ec__min}}</td>
+										</tr>
+										<tr>
+											<td style="text-align: left;" width="400" rowspan="3"><strong><a href="{% url '2bsacc'%}"><em>Batterie</em></a></strong>
+												<br><h1><a href="{% url '2bsacc'%}" id="capsol2_bat"><em>{{cap2.Bat}} V</em></a></h1>
+											</td>
+											<td style="text-align: right;" width="150">Max:{{max_bat2.Bat__max}}</td>
+										</tr>
+										<tr>
+											<td style="text-align: right;" width="150">Moy:{{moyb2}}</td>
+										</tr>
+										<tr>
+											<td style="text-align: right;" width="150">Min:{{min_bat2.Bat__min}}</td>
+										</tr>
+									</tbody>
+								</table>						    
+							</div><!--//app-card-body-->
+				    	</div><!--//col-->
+			    	</div><!--//row-->
+		    	</div><!--//container-fluid-->
+	    	</div><!--//app-content-->
+			<footer class="app-footer">
+			</footer><!--//app-footer-->
+    	</div><!--//app-wrapper-->    					
+	</div>
+</body>
+
+</html> 
+
